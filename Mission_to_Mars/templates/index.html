@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/bootstrap.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+  </head>
+
+
+
+  <body>
+    <h1>Web Scrapping Challenge: Mission to Mars</h1>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Mars Space Facts</h1>
+      <hr class="my-4">
+      <p>Push the button to gather interesting facts about Mars</p>
+      <div class="caption">
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Mars Facts!</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Most Recent Article</h1>
+      <h2>{{mars_facts['nasa_title']}}</h2> 
+      <p>{{mars_facts['nasa_paragraph']}}</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <h1 class="display-4">Featured Mars Image</h1>
+          <img alt="sample" src={{mars_facts['mars_image']}} class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Mars Facts</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col"></th>
+            <th scope="col">Mars</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Equatorial Diameter:</td>
+            <td>{{mars_facts['mars_facts_dict'][0]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Polar Diameter:</td>
+            <td>{{mars_facts['mars_facts_dict'][1]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Mass:</td>
+            <td>{{mars_facts['mars_facts_dict'][2]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Moons:</td>
+            <td>{{mars_facts['mars_facts_dict'][3]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Orbit Distance:</td>
+            <td>{{mars_facts['mars_facts_dict'][4]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Orbit Period:</td>
+            <td>{{mars_facts['mars_facts_dict'][5]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Surface Temperature:</td>
+            <td>-{{mars_facts['mars_facts_dict'][6]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>First Record:</td>
+            <td>{{mars_facts['mars_facts_dict'][7]['Value']}}</td>
+          </tr>
+          <tr>
+            <td>Recorded By:</td>
+            <td>{{mars_facts['mars_facts_dict'][8]['Value']}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Mars Hemispheres</h1>
+          <h2>{{mars_facts['cerberus']['title']}}</h2>
+          <img alt='sample' src={{mars_facts['cerberus']['img_url']}} class="responsive">
+          <h2>{{mars_facts['syrtis_mjr']['title']}}</h2>
+          <img alt='sample' src={{mars_facts['syrtis_mjr']['img_url']}} class="responsive">
+          <h2>{{mars_facts['vales_marineris']['title']}}</h2>
+          <img alt='sample' src={{mars_facts['vales_marineris']['img_url']}} class="responsive">
+          <h2>{{mars_facts['schiaparelli']['title']}}</h2>
+          <img alt='sample' src={{mars_facts['schiaparelli']['img_url']}} class="responsive">
+    </div>
+  </div>
+        
+        
+    
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+</html>

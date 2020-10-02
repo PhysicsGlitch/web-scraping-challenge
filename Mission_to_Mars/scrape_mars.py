@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup as bs
-import pymongo
+import re
 import requests
 import pandas as pd
 from splinter import Browser
@@ -44,19 +44,20 @@ def scrape_mars_data():
     
     url = jpl_url
     jpl_browser.visit(url)
-    
+
     html = jpl_browser.html
     soup = bs(html, 'html.parser')
 
-    carousel_html = soup.find('div', 'carousel_items')
-    feature_image = carousel_html.find('article alt')
-    # images = 'https://www.jpl.nasa.gov' + relative_image_path
-
-    # Store data in a dictionary
-    # mars_pic = images
+    carousel_html = soup.find('div', 'carousel_items', 'style')
+    carousel_string = str(carousel_html)
 
     # Close the browser after scraping
     jpl_browser.quit()
+
+    search_pattern = "(?<=spaceimages).*?(?=.jpg)"
+    url_img = re.search(search_pattern, carousel_string).group(0)
+    mars_image = "https://www.jpl.nasa.gov" + "/spaceimages" + url_img + ".jpg"
+
     
     # Code to get the Mars Facts
     mars_table = pd.read_html(mars_facts_url)
@@ -83,21 +84,13 @@ def scrape_mars_data():
     mars_hemi_images['syrtis_mjr'] = syrtis_mjr
     mars_hemi_images['vales_marineris'] = vales_marineris
     mars_hemi_images['schiaparelli'] = schiaparelli
-
-        
-    #response = requests.get(nasa_url)
-    #soup = (bs(response.text, 'lxml'))
-    #nasa_title = soup.title.text
-    #nasa_paragraphs = soup.find_all('p')
-    #nasa_dict = {'title': nasa_title, 'article': nasa_paragraphs}
-    #mars_facts.update(nasa_dict)
-
     
     mars_dict = {}
     mars_dict.update(mars_hemi_images)
     mars_dict['mars_facts_dict'] = mars_facts_dict
     mars_dict['nasa_title'] = nasa_title
     mars_dict['nasa_paragraph'] = nasa_paragraph
+    mars_dict['mars_image'] = mars_image
     return mars_dict
     
 if __name__ == "__main__":
